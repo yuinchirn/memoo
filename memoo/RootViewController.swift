@@ -38,6 +38,7 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
         // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
         self.view.gestureRecognizers = self.pageViewController!.gestureRecognizers
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

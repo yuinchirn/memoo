@@ -18,7 +18,6 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,6 +27,7 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         if let obj: AnyObject = dataObject {
             self.dataLabel!.text = obj.description
         } else {
