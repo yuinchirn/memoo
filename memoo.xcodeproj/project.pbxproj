@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95374F551A591C1B000A2225 /* MemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95374F541A591C1B000A2225 /* MemoListViewController.swift */; };
 		958C59601A5542400006FA7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C595F1A5542400006FA7B /* AppDelegate.swift */; };
 		958C59621A5542400006FA7B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C59611A5542400006FA7B /* RootViewController.swift */; };
 		958C59641A5542400006FA7B /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C59631A5542400006FA7B /* DataViewController.swift */; };
@@ -15,6 +16,8 @@
 		958C596B1A5542400006FA7B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 958C596A1A5542400006FA7B /* Images.xcassets */; };
 		958C596E1A5542400006FA7B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 958C596C1A5542400006FA7B /* LaunchScreen.xib */; };
 		958C597A1A5542400006FA7B /* memooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C59791A5542400006FA7B /* memooTests.swift */; };
+		958C59841A5644410006FA7B /* TableVIewCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 958C59831A5644410006FA7B /* TableVIewCustomCell.xib */; };
+		958C59861A56462C0006FA7B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C59851A56462C0006FA7B /* CustomTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		95374F541A591C1B000A2225 /* MemoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoListViewController.swift; sourceTree = "<group>"; };
 		958C595A1A5542400006FA7B /* memoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		958C595E1A5542400006FA7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		958C595F1A5542400006FA7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +44,8 @@
 		958C59731A5542400006FA7B /* memooTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = memooTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		958C59781A5542400006FA7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		958C59791A5542400006FA7B /* memooTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memooTests.swift; sourceTree = "<group>"; };
+		958C59831A5644410006FA7B /* TableVIewCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableVIewCustomCell.xib; sourceTree = "<group>"; };
+		958C59851A56462C0006FA7B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = ../CustomTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +91,10 @@
 				958C59611A5542400006FA7B /* RootViewController.swift */,
 				958C59631A5542400006FA7B /* DataViewController.swift */,
 				958C59651A5542400006FA7B /* ModelController.swift */,
+				95374F541A591C1B000A2225 /* MemoListViewController.swift */,
 				958C59671A5542400006FA7B /* Main.storyboard */,
+				958C59851A56462C0006FA7B /* CustomTableViewCell.swift */,
+				958C59831A5644410006FA7B /* TableVIewCustomCell.xib */,
 				958C596A1A5542400006FA7B /* Images.xcassets */,
 				958C596C1A5542400006FA7B /* LaunchScreen.xib */,
 				958C595D1A5542400006FA7B /* Supporting Files */,
@@ -200,6 +209,7 @@
 			files = (
 				958C59691A5542400006FA7B /* Main.storyboard in Resources */,
 				958C596E1A5542400006FA7B /* LaunchScreen.xib in Resources */,
+				958C59841A5644410006FA7B /* TableVIewCustomCell.xib in Resources */,
 				958C596B1A5542400006FA7B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,6 +229,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				958C59621A5542400006FA7B /* RootViewController.swift in Sources */,
+				958C59861A56462C0006FA7B /* CustomTableViewCell.swift in Sources */,
+				95374F551A591C1B000A2225 /* MemoListViewController.swift in Sources */,
 				958C59661A5542400006FA7B /* ModelController.swift in Sources */,
 				958C59641A5542400006FA7B /* DataViewController.swift in Sources */,
 				958C59601A5542400006FA7B /* AppDelegate.swift in Sources */,
@@ -413,6 +425,7 @@
 				958C597F1A5542400006FA7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		958C59801A5542400006FA7B /* Build configuration list for PBXNativeTarget "memooTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +434,7 @@
 				958C59821A5542400006FA7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
