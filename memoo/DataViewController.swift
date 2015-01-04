@@ -8,19 +8,17 @@
 
 import UIKit
 
-class DataViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-
+class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var dataLabel: UILabel!
     var dataObject: AnyObject?
 
-    @IBOutlet weak var memoAreaView: UIView!
-    @IBOutlet weak var memoTitleLabel: UILabel!
-    @IBOutlet weak var memoDescriptionLabel: UILabel!
-    @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,23 +35,24 @@ class DataViewController: UIViewController, UICollectionViewDelegateFlowLayout, 
         }
     }
     
-    
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+    // セルの行数
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionViewCell", forIndexPath: indexPath) as UICollectionViewCell
-        cell.backgroundColor = UIColor.whiteColor()
-        // cell.textLabel?.text = "\(indexPath.section):\(indexPath.row)"
-        // cell.imageView?.image = UIImage(named: "circle")
+    // セルの表示項目
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
+        //let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as CustomTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as CustomTableViewCell
+        
         return cell
     }
-
-
+    
+    // セルを押したときのメソッド
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        // 選択するとアラートを表示する
+        self.performSegueWithIdentifier("detail", sender: indexPath)
+    }
 }
 

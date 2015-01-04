@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		95374F551A591C1B000A2225 /* MemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95374F541A591C1B000A2225 /* MemoListViewController.swift */; };
+		95374F591A592961000A2225 /* createMemo.png in Resources */ = {isa = PBXBuildFile; fileRef = 95374F581A592961000A2225 /* createMemo.png */; };
 		958C59601A5542400006FA7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C595F1A5542400006FA7B /* AppDelegate.swift */; };
 		958C59621A5542400006FA7B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C59611A5542400006FA7B /* RootViewController.swift */; };
 		958C59641A5542400006FA7B /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C59631A5542400006FA7B /* DataViewController.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		95374F541A591C1B000A2225 /* MemoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoListViewController.swift; sourceTree = "<group>"; };
+		95374F581A592961000A2225 /* createMemo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = createMemo.png; sourceTree = "<group>"; };
 		958C595A1A5542400006FA7B /* memoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		958C595E1A5542400006FA7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		958C595F1A5542400006FA7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		95374F561A592947000A2225 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				95374F571A592951000A2225 /* images */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
+		95374F571A592951000A2225 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				95374F581A592961000A2225 /* createMemo.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
 		958C59511A5542400006FA7B = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +105,7 @@
 		958C595C1A5542400006FA7B /* memoo */ = {
 			isa = PBXGroup;
 			children = (
+				95374F561A592947000A2225 /* resources */,
 				958C595F1A5542400006FA7B /* AppDelegate.swift */,
 				958C59611A5542400006FA7B /* RootViewController.swift */,
 				958C59631A5542400006FA7B /* DataViewController.swift */,
@@ -208,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				958C59691A5542400006FA7B /* Main.storyboard in Resources */,
+				95374F591A592961000A2225 /* createMemo.png in Resources */,
 				958C596E1A5542400006FA7B /* LaunchScreen.xib in Resources */,
 				958C59841A5644410006FA7B /* TableVIewCustomCell.xib in Resources */,
 				958C596B1A5542400006FA7B /* Images.xcassets in Resources */,
