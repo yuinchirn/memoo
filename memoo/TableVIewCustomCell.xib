@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="94" id="3ae-pz-oin" customClass="CustomTableViewCell" customModule="memoo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3ae-pz-oin" id="J4h-dH-Bs0">
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015/01/02" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4m-K0-TUS">
+                        <rect key="frame" x="8" y="0.0" width="304" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vj5-2N-MRJ">
+                        <rect key="frame" x="8" y="29" width="304" height="57"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="57" id="yH9-jX-hcw"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="R4m-K0-TUS" firstAttribute="top" secondItem="J4h-dH-Bs0" secondAttribute="top" id="JBm-V0-DNk"/>
+                    <constraint firstItem="R4m-K0-TUS" firstAttribute="trailing" secondItem="J4h-dH-Bs0" secondAttribute="trailingMargin" id="JcZ-Ef-A49"/>
+                    <constraint firstItem="Vj5-2N-MRJ" firstAttribute="trailing" secondItem="R4m-K0-TUS" secondAttribute="trailing" id="Jdx-pq-4lq"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Vj5-2N-MRJ" secondAttribute="bottom" constant="-0.5" id="ReA-qj-TPO"/>
+                    <constraint firstItem="Vj5-2N-MRJ" firstAttribute="leading" secondItem="R4m-K0-TUS" secondAttribute="leading" id="fKQ-RM-R2n"/>
+                    <constraint firstItem="R4m-K0-TUS" firstAttribute="leading" secondItem="J4h-dH-Bs0" secondAttribute="leadingMargin" id="hTW-tj-9hB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dateLabel" destination="R4m-K0-TUS" id="XbJ-sb-9Jf"/>
+                <outlet property="descriptionLabel" destination="Vj5-2N-MRJ" id="ppH-sP-UKx"/>
+            </connections>
+            <point key="canvasLocation" x="355" y="235"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -13,6 +13,7 @@
 		95374F641A638C53000A2225 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95374F631A638C53000A2225 /* RLMSupport.swift */; };
 		95374F661A638C87000A2225 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95374F651A638C87000A2225 /* Realm.framework */; };
 		95374F6C1A6392D2000A2225 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95374F6B1A6392D2000A2225 /* Memo.swift */; };
+		95374F6E1A63F813000A2225 /* EditMemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95374F6D1A63F813000A2225 /* EditMemoViewController.swift */; };
 		958C59601A5542400006FA7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C595F1A5542400006FA7B /* AppDelegate.swift */; };
 		958C59621A5542400006FA7B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C59611A5542400006FA7B /* RootViewController.swift */; };
 		958C59641A5542400006FA7B /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C59631A5542400006FA7B /* DataViewController.swift */; };
@@ -42,6 +43,7 @@
 		95374F631A638C53000A2225 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
 		95374F651A638C87000A2225 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		95374F6B1A6392D2000A2225 /* Memo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
+		95374F6D1A63F813000A2225 /* EditMemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditMemoViewController.swift; sourceTree = "<group>"; };
 		958C595A1A5542400006FA7B /* memoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		958C595E1A5542400006FA7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		958C595F1A5542400006FA7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				95374F541A591C1B000A2225 /* MemoListViewController.swift */,
 				958C59671A5542400006FA7B /* Main.storyboard */,
 				958C59851A56462C0006FA7B /* CustomTableViewCell.swift */,
+				95374F6D1A63F813000A2225 /* EditMemoViewController.swift */,
 				95374F631A638C53000A2225 /* RLMSupport.swift */,
 				95374F6B1A6392D2000A2225 /* Memo.swift */,
 				958C59831A5644410006FA7B /* TableVIewCustomCell.xib */,
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				958C59621A5542400006FA7B /* RootViewController.swift in Sources */,
+				95374F6E1A63F813000A2225 /* EditMemoViewController.swift in Sources */,
 				958C59861A56462C0006FA7B /* CustomTableViewCell.swift in Sources */,
 				95374F641A638C53000A2225 /* RLMSupport.swift in Sources */,
 				95374F6C1A6392D2000A2225 /* Memo.swift in Sources */,

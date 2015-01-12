@@ -79,6 +79,9 @@
                                 <state key="normal" image="createMemo.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="zd4-Xd-795" kind="presentation" id="uzW-qN-ig0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -102,6 +105,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PHE-GN-Yf3" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1064" y="476"/>
+        </scene>
+        <!--Edit Memo View Controller-->
+        <scene sceneID="BC5-np-ebl">
+            <objects>
+                <viewController id="zd4-Xd-795" customClass="EditMemoViewController" customModule="memoo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5oo-IQ-lN0"/>
+                        <viewControllerLayoutGuide type="bottom" id="rib-7M-mXg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hgm-bD-ZLP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQn-uy-7tz">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="stop" id="Iso-nH-XvD">
+                                        <connections>
+                                            <action selector="backToListView:" destination="zd4-Xd-795" id="ecn-7Q-cDX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="L1x-zY-tO6"/>
+                                    <barButtonItem systemItem="save" id="X3P-98-eGL"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UQn-uy-7tz" firstAttribute="leading" secondItem="hgm-bD-ZLP" secondAttribute="leading" id="Hxa-en-q2z"/>
+                            <constraint firstAttribute="trailing" secondItem="UQn-uy-7tz" secondAttribute="trailing" id="L9l-mq-omN"/>
+                            <constraint firstItem="rib-7M-mXg" firstAttribute="top" secondItem="UQn-uy-7tz" secondAttribute="bottom" id="MJz-ke-ThZ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hb0-dY-6oX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1063" y="1194"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="3GU-QQ-JyJ">

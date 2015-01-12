@@ -19,6 +19,8 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
+        
+        println(RLMRealm.defaultRealmPath())
     }
 
     override func didReceiveMemoryWarning() {
