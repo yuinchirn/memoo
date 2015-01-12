@@ -118,6 +118,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cBq-tR-ldy">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="XNP-KL-UTP"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="メモをつくる" id="gKA-wk-d6x"/>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHW-J9-hVS">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zd4-Xd-795" id="s4L-HK-wBB"/>
+                                </connections>
+                            </textView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQn-uy-7tz">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
@@ -127,17 +145,31 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="L1x-zY-tO6"/>
-                                    <barButtonItem systemItem="save" id="X3P-98-eGL"/>
+                                    <barButtonItem systemItem="save" id="X3P-98-eGL">
+                                        <connections>
+                                            <action selector="updateMemo:" destination="zd4-Xd-795" id="K8u-Tp-sbl"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="yHW-J9-hVS" firstAttribute="top" secondItem="cBq-tR-ldy" secondAttribute="bottom" id="Ayr-MZ-pEd"/>
+                            <constraint firstItem="cBq-tR-ldy" firstAttribute="top" secondItem="hgm-bD-ZLP" secondAttribute="topMargin" id="FQ8-ez-rWB"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="yHW-J9-hVS" secondAttribute="bottom" id="Hlx-dM-lTJ"/>
                             <constraint firstItem="UQn-uy-7tz" firstAttribute="leading" secondItem="hgm-bD-ZLP" secondAttribute="leading" id="Hxa-en-q2z"/>
                             <constraint firstAttribute="trailing" secondItem="UQn-uy-7tz" secondAttribute="trailing" id="L9l-mq-omN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yHW-J9-hVS" secondAttribute="trailing" constant="-16" id="LV8-KD-I4W"/>
                             <constraint firstItem="rib-7M-mXg" firstAttribute="top" secondItem="UQn-uy-7tz" secondAttribute="bottom" id="MJz-ke-ThZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cBq-tR-ldy" secondAttribute="trailing" constant="-16" id="gR7-eu-Gb7"/>
+                            <constraint firstItem="cBq-tR-ldy" firstAttribute="leading" secondItem="hgm-bD-ZLP" secondAttribute="leadingMargin" constant="-16" id="h0W-di-eQV"/>
+                            <constraint firstItem="yHW-J9-hVS" firstAttribute="leading" secondItem="hgm-bD-ZLP" secondAttribute="leadingMargin" constant="-16" id="nO3-ut-cEY"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="memoTextView" destination="yHW-J9-hVS" id="0x6-4t-Rlv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hb0-dY-6oX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
