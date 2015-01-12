@@ -62,7 +62,7 @@
                                                 <constraint firstItem="Ew7-l6-7fl" firstAttribute="leading" secondItem="uFT-OM-tmc" secondAttribute="leadingMargin" id="tBv-UE-2m0"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="94j-hR-BRs" id="cbJ-p9-6Ww"/>
                                             <outlet property="descriptionLabel" destination="Ew7-l6-7fl" id="V4U-xF-bxA"/>
@@ -81,7 +81,6 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="tar-dE-UMX" firstAttribute="leading" secondItem="gLe-Tb-ylt" secondAttribute="leadingMargin" id="7dd-Hn-ZsA"/>
                             <constraint firstItem="a4F-Wq-f2I" firstAttribute="top" secondItem="tar-dE-UMX" secondAttribute="bottom" id="EXJ-g8-yS0"/>

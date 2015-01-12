@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		95374F551A591C1B000A2225 /* MemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95374F541A591C1B000A2225 /* MemoListViewController.swift */; };
 		95374F591A592961000A2225 /* createMemo.png in Resources */ = {isa = PBXBuildFile; fileRef = 95374F581A592961000A2225 /* createMemo.png */; };
+		95374F621A638C38000A2225 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 95374F611A638C38000A2225 /* libc++.dylib */; };
+		95374F641A638C53000A2225 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95374F631A638C53000A2225 /* RLMSupport.swift */; };
+		95374F661A638C87000A2225 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95374F651A638C87000A2225 /* Realm.framework */; };
+		95374F6C1A6392D2000A2225 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95374F6B1A6392D2000A2225 /* Memo.swift */; };
 		958C59601A5542400006FA7B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C595F1A5542400006FA7B /* AppDelegate.swift */; };
 		958C59621A5542400006FA7B /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C59611A5542400006FA7B /* RootViewController.swift */; };
 		958C59641A5542400006FA7B /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C59631A5542400006FA7B /* DataViewController.swift */; };
@@ -34,6 +38,10 @@
 /* Begin PBXFileReference section */
 		95374F541A591C1B000A2225 /* MemoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoListViewController.swift; sourceTree = "<group>"; };
 		95374F581A592961000A2225 /* createMemo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = createMemo.png; sourceTree = "<group>"; };
+		95374F611A638C38000A2225 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		95374F631A638C53000A2225 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
+		95374F651A638C87000A2225 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		95374F6B1A6392D2000A2225 /* Memo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		958C595A1A5542400006FA7B /* memoo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memoo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		958C595E1A5542400006FA7B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		958C595F1A5542400006FA7B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95374F661A638C87000A2225 /* Realm.framework in Frameworks */,
+				95374F621A638C38000A2225 /* libc++.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +92,15 @@
 				95374F581A592961000A2225 /* createMemo.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		95374F5A1A638BEE000A2225 /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95374F611A638C38000A2225 /* libc++.dylib */,
+				95374F651A638C87000A2225 /* Realm.framework */,
+			);
+			name = frameworks;
 			sourceTree = "<group>";
 		};
 		958C59511A5542400006FA7B = {
@@ -113,6 +132,8 @@
 				95374F541A591C1B000A2225 /* MemoListViewController.swift */,
 				958C59671A5542400006FA7B /* Main.storyboard */,
 				958C59851A56462C0006FA7B /* CustomTableViewCell.swift */,
+				95374F631A638C53000A2225 /* RLMSupport.swift */,
+				95374F6B1A6392D2000A2225 /* Memo.swift */,
 				958C59831A5644410006FA7B /* TableVIewCustomCell.xib */,
 				958C596A1A5542400006FA7B /* Images.xcassets */,
 				958C596C1A5542400006FA7B /* LaunchScreen.xib */,
@@ -124,6 +145,7 @@
 		958C595D1A5542400006FA7B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				95374F5A1A638BEE000A2225 /* frameworks */,
 				958C595E1A5542400006FA7B /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -250,6 +272,8 @@
 			files = (
 				958C59621A5542400006FA7B /* RootViewController.swift in Sources */,
 				958C59861A56462C0006FA7B /* CustomTableViewCell.swift in Sources */,
+				95374F641A638C53000A2225 /* RLMSupport.swift in Sources */,
+				95374F6C1A6392D2000A2225 /* Memo.swift in Sources */,
 				95374F551A591C1B000A2225 /* MemoListViewController.swift in Sources */,
 				958C59661A5542400006FA7B /* ModelController.swift in Sources */,
 				958C59641A5542400006FA7B /* DataViewController.swift in Sources */,
@@ -376,9 +400,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/memoo",
+				);
 				INFOPLIST_FILE = memoo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "memoo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -386,9 +417,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/memoo",
+				);
 				INFOPLIST_FILE = memoo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "memoo-Bridging-Header.h";
 			};
 			name = Release;
 		};
