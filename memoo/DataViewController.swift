@@ -31,6 +31,14 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        for realmBook in Memo.allObjects() {
+            // book name:realm sample
+            println("Body:\((realmBook as Memo).body)")
+            println("Body:\((realmBook as Memo).createDate)")
+        }
+        
+        
         if let obj: AnyObject = dataObject {
             self.dataLabel!.text = obj.description
         } else {
@@ -40,15 +48,29 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     // セルの行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return Int(Memo.allObjects().count)
     }
     
     // セルの表示項目
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // let cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "Cell")
-        //let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as CustomTableViewCell
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as CustomTableViewCell
         
+        
+        // 現在保存されているメモを表示
+        let memo = Memo()
+        var bodys = Array<String>()
+        var dates = Array<String>()
+        
+        for realmBook in Memo.allObjects(){
+            bodys.append(((realmBook as Memo).body))
+            dates.append(((realmBook as Memo).createDate))
+        }
+        
+        if !bodys.isEmpty && !dates.isEmpty {
+            cell.dateLabel.text = dates[indexPath.row]
+            cell.descriptionLabel.text = bodys[indexPath.row]
+        }
+    
         return cell
     }
     
@@ -56,38 +78,6 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         // 選択するとアラートを表示する
         // self.performSegueWithIdentifier("detail", sender: indexPath)
-        
-        let realm = RLMRealm.defaultRealm()
-        
-        // Bookオブジェクト生成.
-        let memo = Memo()
-        memo.body = "てすと"
-        memo.remindFlg = true
-        
-        
-        // Bookオブジェクトを保存.
-        realm.beginWriteTransaction()
-        realm.addObject(memo)
-        realm.commitWriteTransaction()
-        
-        // 先ほどのBookオブジェクトを取得
-        // Class.allObjectsで全オブジェクト取得.
-        for realmBook in Memo.allObjects() {
-            // book name:realm sample
-            println("book name:\((realmBook as Memo).body)")
-        }
-        
-        /*
-        let book2 = Book()
-        book2.isbn = "999998"
-        book2.name = "realm tutorial 1"
-        book2.price = 1000
-        
-        // Blockでの保存の仕方.
-        realm.transactionWithBlock() {
-            realm.addObject(book2)
-        }
-        */
     }
 }
 

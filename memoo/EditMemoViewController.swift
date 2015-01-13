@@ -9,26 +9,38 @@
 import UIKit
 import Realm
 
-class EditMemoViewController: UIViewController {
+class EditMemoViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var memoTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        memoTextView.delegate = self
     }
     
     // 「×」ボタンのAction:メモリストへ戻る
-    @IBAction func backToListView(sender: AnyObject) {
+    @IBAction func backToMemoList(sender: AnyObject) {
+        self.view.endEditing(true)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // 「save」ボタンのAction:メモ内容を更新、メモリストへ戻る
     @IBAction func updateMemo(sender: AnyObject) {
         
+        
+        
         // メモ内容の保存
         let realm = RLMRealm.defaultRealm()
         let memo = Memo()
         memo.body = memoTextView.text
+        
+        // 作成時間
+        let now = NSDate() // 現在日時の取得
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.timeStyle = .MediumStyle
+        dateFormatter.dateStyle = .MediumStyle
+        println(dateFormatter.stringFromDate(now)) // -> Jun 24, 2014, 11:01:31 AM
+        memo.createDate = dateFormatter.stringFromDate(now)
         
         realm.transactionWithBlock() {
             realm.addObject(memo)
@@ -40,12 +52,39 @@ class EditMemoViewController: UIViewController {
         }
         
         // メモリストへ
+        self.view.endEditing(true)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    /*
+    UITextFieldが編集終了する直前に呼ばれる.
+    */
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        println("textFieldShouldEndEditing:" + textField.text)
+        
+        self.view.endEditing(true)
+        
+        return true
+    }
+
+    func textViewDidChange(textView: UITextView) {
+        println("編集中")
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        println("編集終了")
+        
+    }
+    
+    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+        println("編集終了?")
+        self.view.endEditing(true)
+        textView.resignFirstResponder()
+        return true
     }
 
     /*
