@@ -34,8 +34,8 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         for realmBook in Memo.allObjects() {
             // book name:realm sample
-            println("Body:\((realmBook as Memo).body)")
-            println("Body:\((realmBook as Memo).createDate)")
+            //println("Body:\((realmBook as Memo).body)")
+            // println("CreateDate:\((realmBook as Memo).createDate)")
         }
         
         
@@ -77,7 +77,14 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     // セルを押したときのメソッド
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         // 選択するとアラートを表示する
-        // self.performSegueWithIdentifier("detail", sender: indexPath)
+        self.performSegueWithIdentifier("editMemo", sender: indexPath)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        if (segue.identifier == "editMemo") {
+            let nextViewController: EditMemoViewController = segue.destinationViewController as EditMemoViewController
+            nextViewController.index = sender.row
+        }
     }
 }
 

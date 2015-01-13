@@ -80,7 +80,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="zd4-Xd-795" kind="presentation" id="uzW-qN-ig0"/>
+                                    <segue destination="zd4-Xd-795" kind="presentation" identifier="editMemo" id="uzW-qN-ig0"/>
                                 </connections>
                             </button>
                         </subviews>
