@@ -62,7 +62,7 @@
                                                 <constraint firstItem="Ew7-l6-7fl" firstAttribute="leading" secondItem="uFT-OM-tmc" secondAttribute="leadingMargin" id="tBv-UE-2m0"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <color key="backgroundColor" red="0.72941176470588232" green="0.74901960784313726" blue="0.80784313725490198" alpha="0.29999999999999999" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="94j-hR-BRs" id="cbJ-p9-6Ww"/>
                                             <outlet property="descriptionLabel" destination="Ew7-l6-7fl" id="V4U-xF-bxA"/>
@@ -70,31 +70,16 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JNa-s1-HO6">
-                                <rect key="frame" x="514" y="530" width="70" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="4KW-xd-a5c"/>
-                                    <constraint firstAttribute="width" constant="70" id="oRj-U1-lo2"/>
-                                </constraints>
-                                <state key="normal" image="createMemo.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="zd4-Xd-795" kind="presentation" identifier="editMemo" id="uzW-qN-ig0"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="tar-dE-UMX" firstAttribute="leading" secondItem="gLe-Tb-ylt" secondAttribute="leadingMargin" id="7dd-Hn-ZsA"/>
                             <constraint firstItem="a4F-Wq-f2I" firstAttribute="top" secondItem="tar-dE-UMX" secondAttribute="bottom" id="EXJ-g8-yS0"/>
                             <constraint firstAttribute="trailing" secondItem="i7n-lc-4In" secondAttribute="trailing" constant="8" id="WdW-Rj-aSg"/>
                             <constraint firstItem="tar-dE-UMX" firstAttribute="top" secondItem="i7n-lc-4In" secondAttribute="bottom" id="grw-Ek-1oq"/>
-                            <constraint firstItem="a4F-Wq-f2I" firstAttribute="top" secondItem="JNa-s1-HO6" secondAttribute="bottom" id="iIO-7t-Wce"/>
                             <constraint firstItem="i7n-lc-4In" firstAttribute="top" secondItem="6LC-1I-4vP" secondAttribute="bottom" id="lhq-21-hkw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tar-dE-UMX" secondAttribute="trailing" id="nkz-Fn-5zU"/>
                             <constraint firstItem="i7n-lc-4In" firstAttribute="leading" secondItem="gLe-Tb-ylt" secondAttribute="leading" constant="8" id="reE-mV-FOp"/>
                             <constraint firstItem="i7n-lc-4In" firstAttribute="top" secondItem="6LC-1I-4vP" secondAttribute="bottom" id="tvg-LY-hOw"/>
-                            <constraint firstItem="JNa-s1-HO6" firstAttribute="trailing" secondItem="gLe-Tb-ylt" secondAttribute="trailingMargin" id="vsd-Qk-hxs"/>
                         </constraints>
                     </view>
                     <connections>
@@ -182,9 +167,31 @@
                     <view key="view" contentMode="scaleToFill" id="cc6-cB-pgf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B2R-Cz-ZYb">
+                                <rect key="frame" x="514" y="530" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="EAL-yt-POE"/>
+                                    <constraint firstAttribute="height" constant="70" id="f9K-d9-pRQ"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="createMemo.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="zd4-Xd-795" kind="presentation" id="6uY-ud-Nm7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8Yh-h8-jIR" firstAttribute="top" secondItem="B2R-Cz-ZYb" secondAttribute="bottom" id="LSI-do-cOr"/>
+                            <constraint firstItem="B2R-Cz-ZYb" firstAttribute="trailing" secondItem="cc6-cB-pgf" secondAttribute="trailingMargin" id="brV-cc-aaX"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="FKc-Je-DRb"/>
+                    <connections>
+                        <outlet property="createMemoButton" destination="B2R-Cz-ZYb" id="w55-gF-Lml"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BPC-vx-IW7" sceneMemberID="firstResponder"/>
             </objects>
