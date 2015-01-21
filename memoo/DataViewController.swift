@@ -16,7 +16,6 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -31,11 +30,14 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.tableView.reloadData()
+        
         
         for realmBook in Memo.allObjects() {
             // book name:realm sample
             //println("Body:\((realmBook as Memo).body)")
             // println("CreateDate:\((realmBook as Memo).createDate)")
+            println("ID:\((realmBook as Memo).id)")
         }
         
         
@@ -80,7 +82,7 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         self.performSegueWithIdentifier("editMemo", sender: indexPath)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "editMemo") {
             let nextViewController: EditMemoViewController = segue.destinationViewController as EditMemoViewController
             nextViewController.index = sender.row

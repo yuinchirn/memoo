@@ -62,8 +62,11 @@ class EditMemoViewController: UIViewController, UITextViewDelegate {
         println(dateFormatter.stringFromDate(now)) // -> Jun 24, 2014, 11:01:31 AM
         memo.createDate = dateFormatter.stringFromDate(now)
         
+        let uuid = NSUUID()
+        memo.id = uuid.UUIDString
+        
         realm.transactionWithBlock() {
-            realm.addObject(memo)
+            realm.addOrUpdateObject(memo)
         }
         
         // メモリストへ
