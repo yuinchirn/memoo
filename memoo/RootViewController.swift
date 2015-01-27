@@ -16,17 +16,15 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        // Configure the page view controller and add it as a child view controller.
+        println(__FUNCTION__)
+        
         self.pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         self.pageViewController!.delegate = self
 
         let startingViewController: DataViewController = self.modelController.viewControllerAtIndex(0, storyboard: self.storyboard!)!
         let viewControllers: NSArray = [startingViewController]
         self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: false, completion: {done in })
-
         self.pageViewController!.dataSource = self.modelController
-
         self.addChildViewController(self.pageViewController!)
         self.view.addSubview(self.pageViewController!.view)
         self.view.bringSubviewToFront(createMemoButton)
@@ -36,10 +34,9 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
         self.pageViewController!.view.frame = pageViewRect
 
         self.pageViewController!.didMoveToParentViewController(self)
-        
-        // タイトル
         self.title = "Memoo"
         
+        /*
         //グラデーションの開始色
         let topColor = UIColor(red:0.07, green:0.13, blue:0.26, alpha:1)
         //グラデーションの開始色
@@ -54,7 +51,7 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
         gradientLayer.frame = self.view.bounds
         //グラデーションレイヤーをビューの一番下に配置
         self.view.layer.insertSublayer(gradientLayer, atIndex: 0)
-
+        */
         // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
         self.view.gestureRecognizers = self.pageViewController!.gestureRecognizers
     }
@@ -79,7 +76,8 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
     // MARK: - UIPageViewController delegate methods
 
     func pageViewController(pageViewController: UIPageViewController, spineLocationForInterfaceOrientation orientation: UIInterfaceOrientation) -> UIPageViewControllerSpineLocation {
-        // Set the spine position to "min" and the page view controller's view controllers array to contain just one view controller. Setting the spine position to 'UIPageViewControllerSpineLocationMid' in landscape orientation sets the doubleSided property to true, so set it to false here.
+        println(__FUNCTION__)
+        
         let currentViewController = self.pageViewController!.viewControllers[0] as UIViewController
         let viewControllers: NSArray = [currentViewController]
         self.pageViewController!.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: {done in })

@@ -12,12 +12,15 @@ import Realm
 class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var dataLabel: UILabel!
     var dataObject: AnyObject?
-
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        println(__FUNCTION__)
+        
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         
         println(RLMRealm.defaultRealmPath())
     }
@@ -29,17 +32,13 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        println(__FUNCTION__)
         
         self.tableView.reloadData()
         
-        
         for realmBook in Memo.allObjects() {
-            // book name:realm sample
-            //println("Body:\((realmBook as Memo).body)")
-            // println("CreateDate:\((realmBook as Memo).createDate)")
             println("ID:\((realmBook as Memo).id)")
         }
-        
         
         if let obj: AnyObject = dataObject {
             self.dataLabel!.text = obj.description
@@ -50,16 +49,20 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     // セルの行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        println(__FUNCTION__)
+        
         return Int(Memo.allObjects().count)
     }
     
     // セルの表示項目
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as CustomTableViewCell
+        println(__FUNCTION__)
         
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as CustomTableViewCell
         
         // 現在保存されているメモを表示
         let memo = Memo()
+        var ids = Array<String>()
         var bodys = Array<String>()
         var dates = Array<String>()
         
@@ -71,21 +74,30 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         if !bodys.isEmpty && !dates.isEmpty {
             cell.dateLabel.text = dates[indexPath.row]
             cell.descriptionLabel.text = bodys[indexPath.row]
+            
         }
-    
+        
         return cell
     }
     
     // セルを押したときのメソッド
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        println(__FUNCTION__)
         // 選択するとアラートを表示する
         self.performSegueWithIdentifier("editMemo", sender: indexPath)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        println(__FUNCTION__)
         if (segue.identifier == "editMemo") {
             let nextViewController: EditMemoViewController = segue.destinationViewController as EditMemoViewController
             nextViewController.index = sender.row
+            
+            var row = UInt(sender.row)
+            var selectedMemo = Memo.allObjects().objectAtIndex(row) as Memo
+            
+            // 押したデータのハッシュ値
+            nextViewController.memoId = selectedMemo.id
         }
     }
 }

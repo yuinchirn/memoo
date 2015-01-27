@@ -24,6 +24,7 @@
 		958C597A1A5542400006FA7B /* memooTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C59791A5542400006FA7B /* memooTests.swift */; };
 		958C59841A5644410006FA7B /* TableVIewCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 958C59831A5644410006FA7B /* TableVIewCustomCell.xib */; };
 		958C59861A56462C0006FA7B /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C59851A56462C0006FA7B /* CustomTableViewCell.swift */; };
+		959D806E1A7009A000A10C8C /* createMemoBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 959D806D1A7009A000A10C8C /* createMemoBtn.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		958C59791A5542400006FA7B /* memooTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memooTests.swift; sourceTree = "<group>"; };
 		958C59831A5644410006FA7B /* TableVIewCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableVIewCustomCell.xib; sourceTree = "<group>"; };
 		958C59851A56462C0006FA7B /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = ../CustomTableViewCell.swift; sourceTree = "<group>"; };
+		959D806D1A7009A000A10C8C /* createMemoBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = createMemoBtn.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 		95374F571A592951000A2225 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				959D806D1A7009A000A10C8C /* createMemoBtn.png */,
 				95374F581A592961000A2225 /* createMemo.png */,
 			);
 			name = images;
@@ -253,6 +256,7 @@
 			files = (
 				958C59691A5542400006FA7B /* Main.storyboard in Resources */,
 				95374F591A592961000A2225 /* createMemo.png in Resources */,
+				959D806E1A7009A000A10C8C /* createMemoBtn.png in Resources */,
 				958C596E1A5542400006FA7B /* LaunchScreen.xib in Resources */,
 				958C59841A5644410006FA7B /* TableVIewCustomCell.xib in Resources */,
 				958C596B1A5542400006FA7B /* Images.xcassets in Resources */,
