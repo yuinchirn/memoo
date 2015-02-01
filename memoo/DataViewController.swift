@@ -11,20 +11,18 @@ import Realm
 
 class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-    @IBOutlet weak var dataLabel: UILabel!
+    // StoryBoard上の変数
     @IBOutlet weak var tableView: UITableView!
-    
     @IBOutlet weak var naviItem: UINavigationItem!
     
+    // ローカル変数
     var dataObject: AnyObject?
-    
     var ids = Array<String>()
     var bodys = Array<String>()
     var dates = Array<String>()
-    var memo: Memo?
     var showResults: RLMResults?
     
-    
+    /*** 初回起動時の挙動***/
     override func viewDidLoad() {
         super.viewDidLoad()
         println(__FUNCTION__)
@@ -36,11 +34,7 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         println(RLMRealm.defaultRealmPath())
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+    /*** 画面表示時の挙動 ***/
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         println(__FUNCTION__)
@@ -82,7 +76,7 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         })
     }
     
-    // セルの行数
+    /*** セルの表示行数 ***/
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         println(__FUNCTION__)
         
@@ -93,18 +87,13 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
     }
     
-    // セルの表示項目
+    /*** セルの表示項目 ***/
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         println(__FUNCTION__)
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as CustomTableViewCell
         
-        println("dates:\(self.dates)")
-        println("description:\(self.description)")
-        
         if !bodys.isEmpty && !dates.isEmpty {
-            // println("Dates\(dates)")
-            println("Id\(ids)")
             cell.id = ids[indexPath.row]
             cell.dateLabel.text = dates[indexPath.row]
             cell.descriptionLabel.text = bodys[indexPath.row]
@@ -117,22 +106,20 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         return cell
     }
     
-    // セルを押したときのメソッド
+    /*** セルを押したときの挙動 ***/
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         println(__FUNCTION__)
         // 選択するとアラートを表示する
         self.performSegueWithIdentifier("editMemo", sender: indexPath)
     }
     
-    // TODO セルを長押しした時の挙動 -> デリートのアクションシート表示
-    
+    /*** メモ削除用のアクションシート表示 ***/
     func showDeleteActionSheet(recognizer:UILongPressGestureRecognizer) {
-        println("でりーと")
+        println(__FUNCTION__)
         
+        // セル番号
         var point = recognizer.locationInView(tableView)
         var indexPath = tableView.indexPathForRowAtPoint(point)
-        println("セル番号：\(indexPath?.row)")
-        println(bodys[indexPath!.row])
         
         let alertController = UIAlertController(title: "Caution", message: "Can I delete it?", preferredStyle: .ActionSheet)
         
@@ -144,14 +131,12 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
         alertController.addAction(deleteAction)
         alertController.addAction(cancelAction)
-        
         presentViewController(alertController, animated: true, completion: nil)
-        
     }
     
     /** メモを削除 **/
     func deleteMemo(rowIndex:Int!) {
-        println("削除")
+        println(__FUNCTION__)
         
         let memoId = ids[rowIndex]
         let realm = RLMRealm.defaultRealm()
@@ -170,12 +155,14 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             let nextViewController: EditMemoViewController = segue.destinationViewController as EditMemoViewController
             nextViewController.index = sender.row
             
-            var row = UInt(sender.row)
-            var selectedMemo = Memo.allObjects().objectAtIndex(row) as Memo
-            
             // 押したデータのハッシュ値
-            nextViewController.memoId = selectedMemo.id
+            nextViewController.memoId = ids[sender.row]
         }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }
 
