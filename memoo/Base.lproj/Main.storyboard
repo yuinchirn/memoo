@@ -130,7 +130,7 @@
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="メモをつくる" id="gKA-wk-d6x"/>
+                                    <navigationItem title="Edit" id="gKA-wk-d6x"/>
                                 </items>
                             </navigationBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHW-J9-hVS">
@@ -161,7 +161,7 @@
                                     <constraint firstAttribute="height" constant="40" id="rId-ee-FMd"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="Not remind"/>
+                                    <segment title="Never remind"/>
                                     <segment title="Remind"/>
                                 </segments>
                                 <connections>

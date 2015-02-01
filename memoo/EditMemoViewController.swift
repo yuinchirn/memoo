@@ -77,10 +77,16 @@ class EditMemoViewController: UIViewController, UITextViewDelegate {
         let dateFormatter = NSDateFormatter()
         dateFormatter.timeStyle = .MediumStyle
         dateFormatter.dateStyle = .MediumStyle
-        println(dateFormatter.stringFromDate(now)) // -> Jun 24, 2014, 11:01:31 AM
-        println("メモID：\(self.memoId)")
+        let nowDateTime = dateFormatter.stringFromDate(now)
         
         if self.memoId == nil {
+            
+            // テキストが空の場合は抜ける
+            if memoTextView.text.isEmpty {
+                self.view.endEditing(true)
+                self.dismissViewControllerAnimated(true, completion: nil)
+                return
+            }
             
             println("新規作成")
             
@@ -90,8 +96,8 @@ class EditMemoViewController: UIViewController, UITextViewDelegate {
             memo.body = memoTextView.text
             let uuid = NSUUID()
             memo.id = uuid.UUIDString
-            memo.createDate = dateFormatter.stringFromDate(now)
-            memo.updateDate = dateFormatter.stringFromDate(now)
+            memo.createDate = nowDateTime
+            memo.updateDate = nowDateTime
             memo.remindFlg = segmentedControll.selectedSegmentIndex == 0 ? false : true
             
             realm.transactionWithBlock() {
@@ -100,7 +106,7 @@ class EditMemoViewController: UIViewController, UITextViewDelegate {
             
         } else {
             
-            println("更新")
+            println("更新(memoId:\(self.memoId))")
             
             // 更新
             var memo = Memo.find(self.memoId!)
@@ -109,10 +115,23 @@ class EditMemoViewController: UIViewController, UITextViewDelegate {
                 return
             }
             
+            if memoTextView.text.isEmpty {
+                
+                // メモ削除
+                let realm = RLMRealm.defaultRealm()
+                realm.beginWriteTransaction()
+                realm.deleteObjects(Memo.objectsWhere("id = '\(memo!.id)'"))
+                realm.commitWriteTransaction()
+                
+                self.view.endEditing(true)
+                self.dismissViewControllerAnimated(true, completion: nil)
+                return
+            }
+            
             // メモの更新r
             memo!.realm.beginWriteTransaction()
             memo!.body = memoTextView.text
-            memo!.updateDate = dateFormatter.stringFromDate(now)
+            memo!.updateDate = nowDateTime
             memo!.realm.addOrUpdateObject(memo)
             memo!.realm.commitWriteTransaction()
         }
