@@ -22,8 +22,18 @@ class Memo : RLMObject {
         return "id"
     }
     
+    // 全ての値を返します。
     class func find(id:String) -> Memo? {
         let result = Memo.objectsWithPredicate(NSPredicate(format: "id = %@", id))
+        if let memos = result {
+            return memos.firstObject() as? Memo
+        }
+        return nil
+    }
+    
+    // 指定したリマインドフラグに一致した値を返します。
+    class func findByRemindFlg(remindFlg:Bool) -> Memo? {
+        let result = Memo.objectsWithPredicate(NSPredicate(format: "remindFlg = %@", remindFlg))
         if let memos = result {
             return memos.firstObject() as? Memo
         }

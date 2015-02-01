@@ -16,6 +16,8 @@ class CustomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        self.bounds = CGRectInset(self.frame, -10.0, -10.0)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

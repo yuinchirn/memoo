@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		95374F551A591C1B000A2225 /* MemoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95374F541A591C1B000A2225 /* MemoListViewController.swift */; };
 		95374F591A592961000A2225 /* createMemo.png in Resources */ = {isa = PBXBuildFile; fileRef = 95374F581A592961000A2225 /* createMemo.png */; };
 		95374F621A638C38000A2225 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 95374F611A638C38000A2225 /* libc++.dylib */; };
 		95374F641A638C53000A2225 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95374F631A638C53000A2225 /* RLMSupport.swift */; };
@@ -38,7 +37,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		95374F541A591C1B000A2225 /* MemoListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoListViewController.swift; sourceTree = "<group>"; };
 		95374F581A592961000A2225 /* createMemo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = createMemo.png; sourceTree = "<group>"; };
 		95374F611A638C38000A2225 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		95374F631A638C53000A2225 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 				958C59611A5542400006FA7B /* RootViewController.swift */,
 				958C59631A5542400006FA7B /* DataViewController.swift */,
 				958C59651A5542400006FA7B /* ModelController.swift */,
-				95374F541A591C1B000A2225 /* MemoListViewController.swift */,
 				958C59671A5542400006FA7B /* Main.storyboard */,
 				958C59851A56462C0006FA7B /* CustomTableViewCell.swift */,
 				95374F6D1A63F813000A2225 /* EditMemoViewController.swift */,
@@ -282,7 +279,6 @@
 				958C59861A56462C0006FA7B /* CustomTableViewCell.swift in Sources */,
 				95374F641A638C53000A2225 /* RLMSupport.swift in Sources */,
 				95374F6C1A6392D2000A2225 /* Memo.swift in Sources */,
-				95374F551A591C1B000A2225 /* MemoListViewController.swift in Sources */,
 				958C59661A5542400006FA7B /* ModelController.swift in Sources */,
 				958C59641A5542400006FA7B /* DataViewController.swift in Sources */,
 				958C59601A5542400006FA7B /* AppDelegate.swift in Sources */,

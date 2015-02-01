@@ -13,6 +13,8 @@ class EditMemoViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var memoTextView: UITextView!
     
+    @IBOutlet weak var segmentedControll: UISegmentedControl!
+    
     var index: Int? = nil
     var memoId: String? = nil
     
@@ -30,11 +32,9 @@ class EditMemoViewController: UIViewController, UITextViewDelegate {
         
         var spacer = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
         
-        var cancel = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: Selector("backToMemoList:"))
+        var done = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: Selector("closeKeyBoard"))
         
-        var save = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: Selector("updateMemo:"))
-        
-        var items = NSArray(objects: cancel,spacer,save)
+        var items = NSArray(objects: spacer,done)
         toolBar.setItems(items, animated: true)
         memoTextView.inputAccessoryView = toolBar
         
@@ -47,7 +47,16 @@ class EditMemoViewController: UIViewController, UITextViewDelegate {
         }
         
         var memo = Memo.find(memoId!)
+        
+        // メモ内容
         memoTextView.text = memo?.body
+        
+        // リマインドフラグ
+        if (memo?.remindFlg == nil || memo?.remindFlg == false) {
+            segmentedControll.selectedSegmentIndex = 0
+        } else if memo?.remindFlg == true {
+            segmentedControll.selectedSegmentIndex = 1
+        }
     }
     
     // 「×」ボタンのAction:メモリストへ戻る
@@ -83,6 +92,7 @@ class EditMemoViewController: UIViewController, UITextViewDelegate {
             memo.id = uuid.UUIDString
             memo.createDate = dateFormatter.stringFromDate(now)
             memo.updateDate = dateFormatter.stringFromDate(now)
+            memo.remindFlg = segmentedControll.selectedSegmentIndex == 0 ? false : true
             
             realm.transactionWithBlock() {
                 realm.addOrUpdateObject(memo)
@@ -110,6 +120,10 @@ class EditMemoViewController: UIViewController, UITextViewDelegate {
         // メモリストへ
         self.view.endEditing(true)
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func closeKeyBoard() {
+        memoTextView.resignFirstResponder()
     }
     
     override func didReceiveMemoryWarning() {
@@ -144,6 +158,34 @@ class EditMemoViewController: UIViewController, UITextViewDelegate {
         return true
     }
 
+    /* リマインドフラグ変更時の挙動 */
+    @IBAction func segmentedControllChanged(sender: UISegmentedControl) {
+        
+        println(self.memoId)
+        
+        var memo:Memo?
+        
+        if (self.memoId != nil) {
+            memo = Memo.find(self.memoId!)
+        } else {
+            memo = Memo()
+        }
+        
+        memo?.realm?.beginWriteTransaction()
+        
+        switch sender.selectedSegmentIndex
+        {
+        case 0:
+            println("remindFlg:OFF")
+            memo?.remindFlg = false
+        case 1:
+            println("remindFlg:ON")
+            memo?.remindFlg = true
+        default:
+            break;  
+        }
+        memo?.realm?.commitWriteTransaction()
+    }
     /*
     // MARK: - Navigation
 

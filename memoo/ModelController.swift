@@ -21,11 +21,12 @@ import UIKit
 class ModelController: NSObject, UIPageViewControllerDataSource {
 
     var pageData = NSArray()
+    
 
     override init() {
         super.init()
         // Create the data model.
-        pageData = NSArray(array: ["リマインド","タイムライン"])
+        pageData = ["リマインド","タイムライン"]
     }
 
     func viewControllerAtIndex(index: Int, storyboard: UIStoryboard) -> DataViewController? {
@@ -38,6 +39,8 @@ class ModelController: NSObject, UIPageViewControllerDataSource {
         // Create a new view controller and pass suitable data.
         let dataViewController = storyboard.instantiateViewControllerWithIdentifier("DataViewController") as DataViewController
         dataViewController.dataObject = self.pageData[index]
+        
+        // indexが0の場合はリマインド形式でremindFlgがONのものだけでシャッフル表示
         
         return dataViewController
     }

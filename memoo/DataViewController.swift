@@ -10,9 +10,15 @@ import UIKit
 import Realm
 
 class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    
     @IBOutlet weak var dataLabel: UILabel!
-    var dataObject: AnyObject?
     @IBOutlet weak var tableView: UITableView!
+    
+    var dataObject: AnyObject?
+    var bodys = Array<String>()
+    var dates = Array<String>()
+    var memo: Memo?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +51,32 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         } else {
             self.dataLabel!.text = ""
         }
+        
+        // 現在保存されているメモを表示
+        if self.dataLabel!.text == "リマインド" {
+            memo = Memo.findByRemindFlg(true)
+            println("抽出方法：リマインド")
+        } else {
+            memo = Memo.findByRemindFlg(false)
+            println("抽出方法：タイムライン")
+        }
+        
+        println("現在のmemo：\(memo)")
+        
+        bodys.removeAll(keepCapacity: true)
+        dates.removeAll(keepCapacity: true)
+        
+        for realmBook in Memo.allObjects(){
+            bodys.append(((realmBook as Memo).body))
+            dates.append(((realmBook as Memo).createDate))
+        }
     }
     
     // セルの行数
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         println(__FUNCTION__)
         
-        return Int(Memo.allObjects().count)
+        return Int(bodys.count)
     }
     
     // セルの表示項目
@@ -60,16 +85,8 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as CustomTableViewCell
         
-        // 現在保存されているメモを表示
-        let memo = Memo()
-        var ids = Array<String>()
-        var bodys = Array<String>()
-        var dates = Array<String>()
-        
-        for realmBook in Memo.allObjects(){
-            bodys.append(((realmBook as Memo).body))
-            dates.append(((realmBook as Memo).createDate))
-        }
+        println("dates:\(self.dates)")
+        println("description:\(self.description)")
         
         if !bodys.isEmpty && !dates.isEmpty {
             cell.dateLabel.text = dates[indexPath.row]
