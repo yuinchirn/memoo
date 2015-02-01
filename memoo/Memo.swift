@@ -32,11 +32,9 @@ class Memo : RLMObject {
     }
     
     // 指定したリマインドフラグに一致した値を返します。
-    class func findByRemindFlg(remindFlg:Bool) -> Memo? {
-        let result = Memo.objectsWithPredicate(NSPredicate(format: "remindFlg = %@", remindFlg))
-        if let memos = result {
-            return memos.firstObject() as? Memo
-        }
-        return nil
+    class func findByRemindFlg(remindFlg:Bool) -> RLMResults? {
+        var query = "remindFlg = \(remindFlg)"
+        return Memo.objectsWhere(query)
     }
+    
 }

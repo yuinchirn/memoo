@@ -17,6 +17,7 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         println(__FUNCTION__)
+        println("RootViewController:viewDidLoad")
         
         self.pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         self.pageViewController!.delegate = self
@@ -34,7 +35,6 @@ class RootViewController: UIViewController, UIPageViewControllerDelegate {
         self.pageViewController!.view.frame = pageViewRect
 
         self.pageViewController!.didMoveToParentViewController(self)
-        self.title = "Memoo"
         
         /*
         //グラデーションの開始色

@@ -20,6 +20,7 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var bodys = Array<String>()
     var dates = Array<String>()
     var memo: Memo?
+    var showResults: RLMResults?
     
     
     override func viewDidLoad() {
@@ -49,28 +50,22 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         
         if let obj: AnyObject = dataObject {
-            // self.dataLabel!.text = obj.description
             self.naviItem.title = obj.description
         } else {
-            // self.dataLabel!.text = ""
             self.naviItem.title = ""
         }
-        
-        // 現在保存されているメモを表示
-        if self.naviItem.title == "リマインド" {
-            memo = Memo.findByRemindFlg(true)
-            println("抽出方法：リマインド")
-        } else {
-            memo = Memo.findByRemindFlg(false)
-            println("抽出方法：タイムライン")
-        }
-        
-        println("現在のmemo：\(memo)")
         
         bodys.removeAll(keepCapacity: true)
         dates.removeAll(keepCapacity: true)
         
-        for realmBook in Memo.allObjects(){
+        // 現在保存されているメモを表示
+        if self.naviItem.title == "リマインド" {
+            showResults = Memo.findByRemindFlg(true)
+        } else {
+            showResults = Memo.findByRemindFlg(false)
+        }
+        
+        for realmBook in showResults! {
             bodys.append(((realmBook as Memo).body))
             dates.append(((realmBook as Memo).createDate))
         }
@@ -80,7 +75,11 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         println(__FUNCTION__)
         
-        return Int(bodys.count)
+        if showResults == nil {
+            return 0
+        } else {
+            return Int(showResults!.count)
+        }
     }
     
     // セルの表示項目
@@ -93,10 +92,16 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         println("description:\(self.description)")
         
         if !bodys.isEmpty && !dates.isEmpty {
+            // println("Dates\(dates)")
+            // println("Body\(bodys)")
             cell.dateLabel.text = dates[indexPath.row]
             cell.descriptionLabel.text = bodys[indexPath.row]
-            
         }
+        
+        var lpgr = UILongPressGestureRecognizer(target: self, action: "showDeleteActionSheet:")
+        lpgr.minimumPressDuration = 2.0;
+        // println(lpgr.valueForKey("tag"))
+        cell.addGestureRecognizer(lpgr)
         
         return cell
     }
@@ -106,6 +111,13 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         println(__FUNCTION__)
         // 選択するとアラートを表示する
         self.performSegueWithIdentifier("editMemo", sender: indexPath)
+    }
+    
+    // TODO セルを長押しした時の挙動 -> デリートのアクションシート表示
+    
+    func showDeleteActionSheet(recognizer:UILongPressGestureRecognizer) {
+        // println(recognizer.valueForKey("tag"))
+        println("でりーと")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
