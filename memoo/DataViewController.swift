@@ -21,17 +21,29 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var bodys = Array<String>()
     var dates = Array<String>()
     var showResults: RLMResults?
+    var refreshControl:UIRefreshControl!
     
     /*** 初回起動時の挙動***/
     override func viewDidLoad() {
         super.viewDidLoad()
         println(__FUNCTION__)
         
+        // デリゲート設定
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
         
-        println(RLMRealm.defaultRealmPath())
+        // UIRefreshControl設定
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: "refreshRandom", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl)
+    }
+    
+    /*** Remindテーブルビューをランダム更新 ***/
+    // TODO ランダムロジック実装
+    func refreshRandom() {
+        println("ランダム更新")
+        refreshControl.endRefreshing()
     }
 
     /*** 画面表示時の挙動 ***/
@@ -59,6 +71,7 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         // 現在保存されているメモを表示
         // TODO ハードコーディングからenum管理へ
+        // TODO タイムラインを時系列順へ変更
         if self.naviItem.title == "Remind" {
             showResults = Memo.findByRemindFlg(true)
         } else {
