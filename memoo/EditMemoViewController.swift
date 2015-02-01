@@ -110,7 +110,6 @@ class EditMemoViewController: UIViewController, UITextViewDelegate {
             
             // 更新
             var memo = Memo.find(self.memoId!)
-            
             if memo == nil {
                 return
             }

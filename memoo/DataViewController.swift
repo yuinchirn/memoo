@@ -58,7 +58,8 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         dates.removeAll(keepCapacity: true)
         
         // 現在保存されているメモを表示
-        if self.naviItem.title == "リマインド" {
+        // TODO ハードコーディングからenum管理へ
+        if self.naviItem.title == "Remind" {
             showResults = Memo.findByRemindFlg(true)
         } else {
             showResults = Memo.findByRemindFlg(false)
