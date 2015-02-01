@@ -14,6 +14,8 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var dataLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var naviItem: UINavigationItem!
+    
     var dataObject: AnyObject?
     var bodys = Array<String>()
     var dates = Array<String>()
@@ -47,13 +49,15 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         
         if let obj: AnyObject = dataObject {
-            self.dataLabel!.text = obj.description
+            // self.dataLabel!.text = obj.description
+            self.naviItem.title = obj.description
         } else {
-            self.dataLabel!.text = ""
+            // self.dataLabel!.text = ""
+            self.naviItem.title = ""
         }
         
         // 現在保存されているメモを表示
-        if self.dataLabel!.text == "リマインド" {
+        if self.naviItem.title == "リマインド" {
             memo = Memo.findByRemindFlg(true)
             println("抽出方法：リマインド")
         } else {
