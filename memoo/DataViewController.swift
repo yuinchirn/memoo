@@ -17,6 +17,8 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     @IBOutlet weak var naviItem: UINavigationItem!
     
     var dataObject: AnyObject?
+    
+    var ids = Array<String>()
     var bodys = Array<String>()
     var dates = Array<String>()
     var memo: Memo?
@@ -43,18 +45,21 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         super.viewWillAppear(animated)
         println(__FUNCTION__)
         
-        self.tableView.reloadData()
-        
-        for realmBook in Memo.allObjects() {
-            println("ID:\((realmBook as Memo).id)")
-        }
-        
+        // NavigationBarのTitleを変更
         if let obj: AnyObject = dataObject {
             self.naviItem.title = obj.description
         } else {
             self.naviItem.title = ""
         }
+        // データを更新
+        self.refreshTableData()
+    }
+    
+    /*** データを更新します。 ***/
+    func refreshTableData() {
         
+        // 古いデータを削除
+        ids.removeAll(keepCapacity: true)
         bodys.removeAll(keepCapacity: true)
         dates.removeAll(keepCapacity: true)
         
@@ -66,9 +71,15 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         }
         
         for realmBook in showResults! {
+            ids.append(((realmBook as Memo).id))
             bodys.append(((realmBook as Memo).body))
             dates.append(((realmBook as Memo).createDate))
         }
+        
+        // テーブルを更新
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tableView.reloadData()
+        })
     }
     
     // セルの行数
@@ -93,14 +104,14 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         if !bodys.isEmpty && !dates.isEmpty {
             // println("Dates\(dates)")
-            // println("Body\(bodys)")
+            println("Id\(ids)")
+            cell.id = ids[indexPath.row]
             cell.dateLabel.text = dates[indexPath.row]
             cell.descriptionLabel.text = bodys[indexPath.row]
         }
         
         var lpgr = UILongPressGestureRecognizer(target: self, action: "showDeleteActionSheet:")
-        lpgr.minimumPressDuration = 2.0;
-        // println(lpgr.valueForKey("tag"))
+        lpgr.minimumPressDuration = 1.0;
         cell.addGestureRecognizer(lpgr)
         
         return cell
@@ -116,8 +127,41 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     // TODO セルを長押しした時の挙動 -> デリートのアクションシート表示
     
     func showDeleteActionSheet(recognizer:UILongPressGestureRecognizer) {
-        // println(recognizer.valueForKey("tag"))
         println("でりーと")
+        
+        var point = recognizer.locationInView(tableView)
+        var indexPath = tableView.indexPathForRowAtPoint(point)
+        println("セル番号：\(indexPath?.row)")
+        println(bodys[indexPath!.row])
+        
+        let alertController = UIAlertController(title: "Caution", message: "Can I delete it?", preferredStyle: .ActionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .Destructive, handler: {
+            (action:UIAlertAction!) -> Void in
+            self.deleteMemo(indexPath!.row)
+        })
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+        
+    }
+    
+    /** メモを削除 **/
+    func deleteMemo(rowIndex:Int!) {
+        println("削除")
+        
+        let memoId = ids[rowIndex]
+        let realm = RLMRealm.defaultRealm()
+        realm.beginWriteTransaction()
+        realm.deleteObjects(Memo.objectsWhere("id = '\(memoId)'"))
+        realm.commitWriteTransaction()
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.refreshTableData()
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

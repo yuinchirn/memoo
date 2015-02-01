@@ -9,7 +9,8 @@
 import UIKit
 
 class CustomTableViewCell: UITableViewCell {
-
+    
+    var id: String?
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
