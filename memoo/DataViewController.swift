@@ -22,6 +22,7 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var dates = Array<String>()
     var showResults: RLMResults?
     var refreshControl:UIRefreshControl!
+    var memoData:[(id:String,dates:String,body:String)] = []
     
     /*** 初回起動時の挙動***/
     override func viewDidLoad() {
@@ -42,7 +43,17 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     /*** Remindテーブルビューをランダム更新 ***/
     // TODO ランダムロジック実装
     func refreshRandom() {
-        println("ランダム更新")
+        println(__FUNCTION__)
+        
+        if memoData.isEmpty {
+            refreshControl.endRefreshing()
+            return
+        }
+        
+        memoData.shuffle()
+        
+        self.tableView.reloadData()
+        
         refreshControl.endRefreshing()
     }
 
@@ -64,11 +75,6 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     /*** データを更新します。 ***/
     func refreshTableData() {
         
-        // 古いデータを削除
-        ids.removeAll(keepCapacity: true)
-        bodys.removeAll(keepCapacity: true)
-        dates.removeAll(keepCapacity: true)
-        
         // 現在保存されているメモを表示
         // TODO ハードコーディングからenum管理へ
         // TODO タイムラインを時系列順へ変更
@@ -78,10 +84,10 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             showResults = Memo.findByRemindFlg(false)
         }
         
+        memoData.removeAll(keepCapacity: false)
+        
         for realmBook in showResults! {
-            ids.append(((realmBook as Memo).id))
-            bodys.append(((realmBook as Memo).body))
-            dates.append(((realmBook as Memo).createDate))
+            memoData.append(id:String((realmBook as Memo).id),dates:String((realmBook as Memo).createDate),body:String((realmBook as Memo).body))
         }
         
         // テーブルを更新
@@ -107,10 +113,10 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as CustomTableViewCell
         
-        if !bodys.isEmpty && !dates.isEmpty {
-            cell.id = ids[indexPath.row]
-            cell.dateLabel.text = dates[indexPath.row]
-            cell.descriptionLabel.text = bodys[indexPath.row]
+        if !memoData.isEmpty {
+            cell.id = memoData[indexPath.row].id
+            cell.dateLabel.text = memoData[indexPath.row].dates
+            cell.descriptionLabel.text = memoData[indexPath.row].body
         }
         
         var lpgr = UILongPressGestureRecognizer(target: self, action: "showDeleteActionSheet:")
@@ -152,7 +158,7 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     func deleteMemo(rowIndex:Int!) {
         println(__FUNCTION__)
         
-        let memoId = ids[rowIndex]
+        let memoId = memoData[rowIndex].id
         let realm = RLMRealm.defaultRealm()
         realm.beginWriteTransaction()
         realm.deleteObjects(Memo.objectsWhere("id = '\(memoId)'"))
@@ -170,7 +176,7 @@ class DataViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
             nextViewController.index = sender.row
             
             // 押したデータのハッシュ値
-            nextViewController.memoId = ids[sender.row]
+            nextViewController.memoId = memoData[sender.row].id
         }
     }
     

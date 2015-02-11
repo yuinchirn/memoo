@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9523F9AF1A83B52C009535A3 /* ExtendArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9523F9AE1A83B52C009535A3 /* ExtendArray.swift */; };
 		95374F591A592961000A2225 /* createMemo.png in Resources */ = {isa = PBXBuildFile; fileRef = 95374F581A592961000A2225 /* createMemo.png */; };
 		95374F621A638C38000A2225 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 95374F611A638C38000A2225 /* libc++.dylib */; };
 		95374F641A638C53000A2225 /* RLMSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95374F631A638C53000A2225 /* RLMSupport.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9523F9AE1A83B52C009535A3 /* ExtendArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendArray.swift; sourceTree = "<group>"; };
 		95374F581A592961000A2225 /* createMemo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = createMemo.png; sourceTree = "<group>"; };
 		95374F611A638C38000A2225 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		95374F631A638C53000A2225 /* RLMSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RLMSupport.swift; sourceTree = "<group>"; };
@@ -80,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9523F9AD1A83B4E0009535A3 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				9523F9AE1A83B52C009535A3 /* ExtendArray.swift */,
+			);
+			name = category;
+			sourceTree = "<group>";
+		};
 		95374F561A592947000A2225 /* resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +137,7 @@
 		958C595C1A5542400006FA7B /* memoo */ = {
 			isa = PBXGroup;
 			children = (
+				9523F9AD1A83B4E0009535A3 /* category */,
 				95374F561A592947000A2225 /* resources */,
 				958C595F1A5542400006FA7B /* AppDelegate.swift */,
 				958C59611A5542400006FA7B /* RootViewController.swift */,
@@ -220,6 +231,7 @@
 				TargetAttributes = {
 					958C59591A5542400006FA7B = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 5FA42WKW3U;
 					};
 					958C59721A5542400006FA7B = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -278,6 +290,7 @@
 				95374F6E1A63F813000A2225 /* EditMemoViewController.swift in Sources */,
 				958C59861A56462C0006FA7B /* CustomTableViewCell.swift in Sources */,
 				95374F641A638C53000A2225 /* RLMSupport.swift in Sources */,
+				9523F9AF1A83B52C009535A3 /* ExtendArray.swift in Sources */,
 				95374F6C1A6392D2000A2225 /* Memo.swift in Sources */,
 				958C59661A5542400006FA7B /* ModelController.swift in Sources */,
 				958C59641A5542400006FA7B /* DataViewController.swift in Sources */,
@@ -405,6 +418,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yuta Chiba (5FA42WKW3U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/memoo",
@@ -412,6 +427,7 @@
 				INFOPLIST_FILE = memoo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ff0f19b8-46c9-41fa-a984-d2877c9b430d";
 				SWIFT_OBJC_BRIDGING_HEADER = "memoo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -422,6 +438,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yuta Chiba (5FA42WKW3U)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/memoo",
@@ -429,6 +447,7 @@
 				INFOPLIST_FILE = memoo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ff0f19b8-46c9-41fa-a984-d2877c9b430d";
 				SWIFT_OBJC_BRIDGING_HEADER = "memoo-Bridging-Header.h";
 			};
 			name = Release;

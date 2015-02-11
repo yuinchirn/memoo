@@ -133,7 +133,7 @@
                                     <navigationItem title="Edit" id="gKA-wk-d6x"/>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yHW-J9-hVS">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yHW-J9-hVS">
                                 <rect key="frame" x="0.0" y="64" width="600" height="452"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -156,7 +156,7 @@
                                 </items>
                             </toolbar>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DoT-bg-VNv">
-                                <rect key="frame" x="0.0" y="528" width="600" height="29"/>
+                                <rect key="frame" x="0.0" y="528" width="600" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rId-ee-FMd"/>
                                 </constraints>
@@ -189,6 +189,7 @@
                     <connections>
                         <outlet property="memoTextView" destination="yHW-J9-hVS" id="0x6-4t-Rlv"/>
                         <outlet property="segmentedControll" destination="DoT-bg-VNv" id="WyP-rL-mwF"/>
+                        <outlet property="textViewBottomConstraint" destination="Hlx-dM-lTJ" id="Maq-U5-Rsa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hb0-dY-6oX" userLabel="First Responder" sceneMemberID="firstResponder"/>

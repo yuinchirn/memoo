@@ -13,6 +13,7 @@ class EditMemoViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var memoTextView: UITextView!
     
+    @IBOutlet var textViewBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var segmentedControll: UISegmentedControl!
     
     var index: Int? = nil
@@ -22,6 +23,62 @@ class EditMemoViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         memoTextView.delegate = self
         setToolbarOnKeyboard()
+        registerForKeyBoardNotifications()
+        
+    }
+    
+    /* キーボードが出現、消失時の通知を登録 */
+    func registerForKeyBoardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillBeHidden"), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    /* キーボード出現時 */
+    func keyboardWillShow(notification:NSNotification){
+        // TODO キーボード出現時のテキストフィールドの挙動を調整
+        
+        var keyboardRect = notification.userInfo![UIKeyboardFrameEndUserInfoKey]!.CGRectValue()
+        
+        //CGRect keyboardFrame;
+        var textViewFrame:CGRect
+        var overlap:CGFloat
+        var keyboardMinY:CGFloat
+        keyboardRect = memoTextView.superview!.convertRect(keyboardRect, fromView: nil)
+        textViewFrame = memoTextView.frame
+        keyboardMinY = max(0.0,CGRectGetMaxX(textViewFrame) - CGRectGetMinY(keyboardRect))
+        
+        var insets :UIEdgeInsets
+        var keyboardMinYInsets:UIEdgeInsets
+        
+        var currentRect = memoTextView.caretRectForPosition(memoTextView.selectedTextRange?.start)
+        println(currentRect)
+        
+        var currentTextRect = CGRectMake(currentRect.origin.x, currentRect.origin.y, currentRect.width, currentRect.height - keyboardMinY)
+        
+        overlap = CGRectGetHeight(keyboardRect)
+        
+        insets = UIEdgeInsetsMake(0.0, 0.0, overlap, 0.0);
+        keyboardMinYInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardMinY, 0.0);
+        // memoTextView.contentInset = insets
+        // memoTextView.scrollIndicatorInsets = keyboardMinYInsets
+        
+
+        // アニメーション
+        var duration = notification.userInfo![UIKeyboardAnimationDurationUserInfoKey]!.doubleValue!
+        var animation = {() -> Void in
+            self.memoTextView.textContainerInset = insets
+            self.memoTextView.scrollRectToVisible(currentRect, animated: true)
+        }
+
+        UIView.animateWithDuration(notification.userInfo![UIKeyboardAnimationDurationUserInfoKey]!.doubleValue!, animations: animation, completion: {(Bool) -> Void in
+                println("移動完了")
+        })
+    }
+    
+    func keyboardWillBeHidden() {
+        memoTextView.scrollIndicatorInsets = UIEdgeInsetsZero
+        memoTextView.textContainerInset = UIEdgeInsetsZero
     }
     
     /* キーボードの上にtoolbarを配置します */
